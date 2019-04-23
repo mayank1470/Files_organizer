@@ -30,11 +30,13 @@ for (dirpath,dirnames,files) in os.walk(path):
             destinationPath=dirpath+delimit+extention+delimit+filename
             print('Source Path ',sourcePath)
             print('Destination Path',destinationPath)
+            shutil.move(sourcePath,destinationPath)
         else:
             sourcePath=dirpath+delimit+filename
             destinationPath=dirpath+delimit+extention+delimit+filename
             print('Source Path ',sourcePath)
             print('Destination Path',destinationPath)
             extentions.append(extention)
+            shutil.move(sourcePath,destinationPath)
 print(extentions)
 saveExtentions(extentions,path)
