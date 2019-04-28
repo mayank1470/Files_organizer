@@ -12,6 +12,7 @@ delimit=str('\\')
 path=input('Enter the path to scan for Files: ')
 #Check if sqlite file is present?
 exists=os.path.isfile(path+'\\'+'extentions.db')
+ignoreList=(input('Enter the extentions to ignore in a space seperated format: ').strip().split())
 if(exists):
     extentions=loadExtentions(path)
 else:
@@ -22,6 +23,8 @@ for (dirpath,dirnames,files) in os.walk(path):
             continue
         extpos=filename.find('.')
         extention=filename[extpos+1:]
+        if(extention in ignoreList):
+            continue
         print(dirpath)
         # print(dirnames)
         print(filename)
